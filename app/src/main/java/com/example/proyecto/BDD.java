@@ -19,56 +19,18 @@ public class BDD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME_NOTAS + " ("
-                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "titulo  TEXT NOT NULL,"
-                    + "Descripcion TEXT,"
-                    + "fechaCreado Date NOT NULL,"
-                    + "fechaLimite Date,"
-                    + "HoraLimite time,"
-                    +  "Cumplida Tinyint"+
-
-                            ""+");"
-                    );
-
-        db.execSQL("CREATE TABLE " + TABLE_NAME_ARCHIVOS + " ("
-                + "id INTEGER PRIMARY KEY,"
-                + "ruta  Text NOT NULL,"
-                + "Audio Tinyint NOT NULL,"
-                + "Imagen Tinyint NOT NULL,"
-                + "Video Tinyint NOT NULL,"
-                + "Descripcion Text"+
-
-                ""+");"
-        );
-
-
-        db.execSQL("CREATE TABLE " + TABLE_NAME_RECORDATORIOS + " ("
-                + "id INTEGER PRIMARY KEY,"
-                + "fecha Date,"
-                + "Hora time"+
-
-                ""+");"
-        );
-
-
-
+        db.execSQL(CrearTabla.CREAR_TABLA_NOTAS);
+        db.execSQL(CrearTabla.CREAR_TABLA_ARCHIVOS);
+        db.execSQL(CrearTabla.CREAR_TABLA_RECORDATORIOS);
 
         }
-
-    public  static final String TABLE_NAME_ARCHIVOS =
-            "archivos";
-
-    public  static final String TABLE_NAME_RECORDATORIOS =
-            "recordatorios";
-
-    public  static final String TABLE_NAME_NOTAS =
-            "notas";
 
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS "+CrearTabla.TABLA_NOTAS);
+        db.execSQL("DROP TABLE IF EXISTS "+CrearTabla.TABLA_ARCHIVOS);
+        db.execSQL("DROP TABLE IF EXISTS "+CrearTabla.TABLA_RECORDATORIOS);
     }
 }
