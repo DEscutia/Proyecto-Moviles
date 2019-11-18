@@ -1,5 +1,6 @@
 package com.example.proyecto;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -52,4 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void Nueva(View view){
+        Intent myintent=new Intent(MainActivity.this,AgregarNota.class);
+        startActivity(myintent);
+    }
+
+
 }
