@@ -7,30 +7,38 @@ public class TareasNotas {
     private Integer id;
     private String Titulo;
     private String Descripcion;
-    private Date FechaCreado;
+    private String FechaCreado;
     private String FechaLimite;
-    private Time HoraLimite;
+    private String HoraLimite;
     private int cumplida;
     private int tarea;
 
-    public TareasNotas(Integer id, String titulo, String descripcion, Date fechaCreado, String fechaLimite, Time horaLimite, int cumplida, int tarea) {
+    public TareasNotas(Integer id, String titulo, String descripcion, String fechaCreado, String fechaLimite,String Horalimite,int tarea) {
         this.id = id;
         Titulo = titulo;
         Descripcion = descripcion;
         FechaCreado = fechaCreado;
         FechaLimite = fechaLimite;
-        HoraLimite = horaLimite;
-        this.cumplida = cumplida;
+        this.HoraLimite=Horalimite;
         this.tarea = tarea;
+
     }
 
-    public TareasNotas(Integer id, String titulo, String descripcion, Date fechaCreado, int cumplida, int tarea) {
+    public TareasNotas(Integer id, String titulo, String descripcion, String fechaCreado, int cumplida, int tarea) {
         this.id = id;
         Titulo = titulo;
         Descripcion = descripcion;
         FechaCreado = fechaCreado;
         this.cumplida = cumplida;
         this.tarea = tarea;
+    }
+
+    public TareasNotas(Integer id,String titulo, String descripcion,int tarea){
+        this.id=id;
+        this.Titulo=titulo;
+        this.Descripcion=descripcion;
+        this.tarea=tarea;
+
     }
 
     public Integer getId() {
@@ -57,11 +65,11 @@ public class TareasNotas {
         Descripcion = descripcion;
     }
 
-    public Date getFechaCreado() {
+    public String getFechaCreado() {
         return FechaCreado;
     }
 
-    public void setFechaCreado(Date fechaCreado) {
+    public void setFechaCreado(String fechaCreado) {
         FechaCreado = fechaCreado;
     }
 
@@ -73,11 +81,11 @@ public class TareasNotas {
         FechaLimite = fechaLimite;
     }
 
-    public Time getHoraLimite() {
+    public String getHoraLimite() {
         return HoraLimite;
     }
 
-    public void setHoraLimite(Time horaLimite) {
+    public void setHoraLimite(String horaLimite) {
         HoraLimite = horaLimite;
     }
 
