@@ -33,11 +33,11 @@ public class TareasNotas {
         this.tarea = tarea;
     }
 
-    public TareasNotas(Integer id,String titulo, String descripcion,int tarea){
+    public TareasNotas(Integer id,String titulo, String descripcion){
         this.id=id;
         this.Titulo=titulo;
         this.Descripcion=descripcion;
-        this.tarea=tarea;
+
 
     }
 

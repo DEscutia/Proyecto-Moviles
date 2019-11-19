@@ -27,7 +27,7 @@ public class AgregarNota extends AppCompatActivity {
     TextView txtTitulo, txtDescripcion, txtRecordatorio, tvFecha, tvHora;
     EditText etTitulo, etDescripcion;
     RadioButton rbtnNota, rbtnTarea;
-    final DaoNotasTareas dao =new DaoNotasTareas(this);
+
 
     private static final String CERO = "0";
     private static final String BARRA = "/";
@@ -50,13 +50,52 @@ public class AgregarNota extends AppCompatActivity {
         etTitulo = (EditText) findViewById(R.id.etTitulo);
         etDescripcion = (EditText) findViewById(R.id.etDescripcion);
         tvHora = (TextView) findViewById(R.id.tvHora);
-        txtTitulo = (TextView) findViewById(R.id.txtTitulo);
-        txtDescripcion = (TextView) findViewById(R.id.txtDescripcion);
         txtRecordatorio = (TextView) findViewById(R.id.txtRecordatorio);
         tvFecha = (TextView) findViewById(R.id.tvFecha);
         rbtnNota = (RadioButton) findViewById(R.id.rbtnNota);
         rbtnTarea = (RadioButton) findViewById(R.id.rbtnTarea);
         btnHora = (Button) findViewById(R.id.btnHora);
+
+        final DaoNotasTareas dao =new DaoNotasTareas(this);
+
+
+
+        btnGuardar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+
+                android.text.format.Time today=new Time(android.text.format.Time.getCurrentTimezone());
+                String lol=today.toString();
+
+                if(Tarea==1){
+
+                    dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
+                            etDescripcion.getText().toString(),lol,tvFecha.getText().toString(),
+                            tvHora.getText().toString(),Tarea));
+
+                }else{
+
+                    dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
+                            etDescripcion.getText().toString()));
+
+                }
+
+
+                int contador=0;
+                for (TareasNotas tn : dao.getAll()){
+                    contador++;
+                }
+
+                Intent myintent = new Intent(AgregarNota.this, MainActivity.class);
+                myintent.putExtra("dato",contador);
+                startActivity(myintent);
+
+            }
+
+        });
+
 
 
     }
@@ -112,27 +151,7 @@ public class AgregarNota extends AppCompatActivity {
         Tarea=1;
     }
 
-    public void Guardar(View view){
-        Intent myintent = new Intent(AgregarNota.this, MainActivity.class);
-        startActivity(myintent);
 
-        android.text.format.Time today=new Time(android.text.format.Time.getCurrentTimezone());
-        String lol=today.toString();
-
-        if(Tarea==1){
-
-            dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
-                    etDescripcion.getText().toString(),lol,tvFecha.getText().toString(),
-                    tvHora.getText().toString(),Tarea));
-
-        }else{
-
-            dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
-                    etDescripcion.getText().toString(), Tarea));
-
-        }
-
-    }
 
 
 

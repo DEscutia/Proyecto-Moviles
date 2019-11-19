@@ -15,6 +15,8 @@ public class BDD extends SQLiteOpenHelper {
             "id", "titulo","Descripcion","fechaCreado","fechaLimite","HoraLimite","Cumplida", "Tarea"
     };
 
+
+
     public  static final String TABLE_NAME_NOTA =
             "notas";
 
@@ -26,10 +28,21 @@ public class BDD extends SQLiteOpenHelper {
     }
 
 
+    public static final String CREAR_TABLA_NOTAS="CREATE TABLE " + TABLE_NAME_NOTA + " ("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "titulo TEXT NOT NULL,"
+            + "Descripcion TEXT,"
+            +"fechaCreado  Date,"
+            + "fechaLimite text ,"
+            + "HoraLimite time,"
+            +  "Cumplida Tinyint,"
+            + "Tarea Tinyint"+
+            ");";
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CrearTabla.CREAR_TABLA_NOTAS);
+        db.execSQL(CREAR_TABLA_NOTAS);
         db.execSQL(CrearTabla.CREAR_TABLA_ARCHIVOS);
         db.execSQL(CrearTabla.CREAR_TABLA_RECORDATORIOS);
 

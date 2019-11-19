@@ -2,7 +2,11 @@ package com.example.proyecto;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DaoNotasTareas {
 
@@ -18,7 +22,7 @@ public class DaoNotasTareas {
     public long insertarNota(TareasNotas TareasNotas){
         ContentValues contentValues = new ContentValues();
 
-                contentValues.put(BDD.COLUMNS_NAME_NOTA[1],
+        /*        contentValues.put(BDD.COLUMNS_NAME_NOTA[1],
                         TareasNotas.getId());
         contentValues.put(BDD.COLUMNS_NAME_NOTA[2],
                 TareasNotas.getTitulo());
@@ -33,12 +37,67 @@ public class DaoNotasTareas {
         contentValues.put(BDD.COLUMNS_NAME_NOTA[7],
                 TareasNotas.getCumplida());
         contentValues.put(BDD.COLUMNS_NAME_NOTA[8],
-                TareasNotas.getTarea());
+                TareasNotas.getTarea()); */
+
+        contentValues.put(BDD.COLUMNS_NAME_NOTA[1],
+                TareasNotas.getId());
+        contentValues.put(BDD.COLUMNS_NAME_NOTA[2],
+                TareasNotas.getTitulo());
+        contentValues.put(BDD.COLUMNS_NAME_NOTA[3],
+                TareasNotas.getDescripcion());
+
 
         return _sqLiteDatabase.insert(BDD.TABLE_NAME_NOTA,
                 null, contentValues);
 
     }
+
+    public List<TareasNotas> getAll() {
+        List<TareasNotas> lst = null;
+
+        Cursor c = _sqLiteDatabase.query(BDD.TABLE_NAME_NOTA,
+                BDD.COLUMNS_NAME_NOTA,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        if (c.moveToFirst()) {
+            lst = new ArrayList<TareasNotas>();
+            do {
+                TareasNotas notastareas =
+                        new TareasNotas(c.getInt(0), c.getString(1),
+                                c.getString(2));
+                lst.add(notastareas);
+
+            } while (c.moveToNext());
+        }
+        return lst;
+
+    }
+
+
+    public TareasNotas inflaCursor(Cursor c) {
+        TareasNotas tn = new TareasNotas(c.getInt(0), c.getString(1),
+                c.getString(2));
+
+        return tn ;
+    }
+
+
+    public Cursor getAllCursor (){
+        return _sqLiteDatabase.query(BDD.TABLE_NAME_NOTA,
+                BDD.COLUMNS_NAME_NOTA,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+    }
+
 
     public void Actualizar(){
 

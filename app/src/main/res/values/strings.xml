@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Proyecto</string>
     <string name="action_settings">Settings</string>
+
+    <string name="Titulo">Titulo</string>
+    <string name="Descripcion">Descripción</string>
+    <string name="Nota">Nota</string>
+    <string name="Tarea">Tarea</string>
+    <string name="Recordatorio">Recordatorio: </string>
+    <string name="Fecha">Fecha</string>
+    <string name="SelecionarFecha">Seleccionar Fecha</string>
+    <string name="Hora">Hora</string>
+    <string name="SeleccionarHora">Seleccinar Hora</string>
+    <string name="Guardar">Guardar</string>
+
+    <string name="BuscarArchivo">Buscar Archivo</string>
+    <string name="Camara">Camara</string>
+    <string name="Audio">Audio</string>
+    <string name="Descripcion2">Descripcion</string>
+    <string name="Descripcion3"></string>
+    <string name="Guardar2">Guardar</string>
+
+
+
+
 </resources>
