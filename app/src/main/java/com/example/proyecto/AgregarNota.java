@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -26,7 +27,7 @@ public class AgregarNota extends AppCompatActivity {
     TextView txtTitulo, txtDescripcion, txtRecordatorio, tvFecha, tvHora;
     EditText etTitulo, etDescripcion;
     RadioButton rbtnNota, rbtnTarea;
-    BDD conn;
+
 
     private static final String CERO = "0";
     private static final String BARRA = "/";
@@ -49,15 +50,54 @@ public class AgregarNota extends AppCompatActivity {
         etTitulo = (EditText) findViewById(R.id.etTitulo);
         etDescripcion = (EditText) findViewById(R.id.etDescripcion);
         tvHora = (TextView) findViewById(R.id.tvHora);
-        txtTitulo = (TextView) findViewById(R.id.txtTitulo);
-        txtDescripcion = (TextView) findViewById(R.id.txtDescripcion);
         txtRecordatorio = (TextView) findViewById(R.id.txtRecordatorio);
         tvFecha = (TextView) findViewById(R.id.tvFecha);
         rbtnNota = (RadioButton) findViewById(R.id.rbtnNota);
         rbtnTarea = (RadioButton) findViewById(R.id.rbtnTarea);
         btnHora = (Button) findViewById(R.id.btnHora);
 
-        conn=new BDD(getApplicationContext(),"PFinal",null,1);
+        final DaoNotasTareas dao =new DaoNotasTareas(this);
+
+
+
+        btnGuardar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+
+                android.text.format.Time today=new Time(android.text.format.Time.getCurrentTimezone());
+                String lol=today.toString();
+
+                if(Tarea==1){
+
+                    dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
+                            etDescripcion.getText().toString(),lol,tvFecha.getText().toString(),
+                            tvHora.getText().toString(),Tarea));
+
+                }else{
+
+                    dao.insertarNota(new TareasNotas(0,etTitulo.getText().toString(),
+                            etDescripcion.getText().toString()));
+
+                }
+
+
+                int contador=0;
+                for (TareasNotas tn : dao.getAll()){
+                    contador++;
+                }
+
+                Intent myintent = new Intent(AgregarNota.this, MainActivity.class);
+                myintent.putExtra("dato",contador);
+                startActivity(myintent);
+
+            }
+
+        });
+
+
+
     }
 
     public void obtenerFecha(View view) {
@@ -111,30 +151,13 @@ public class AgregarNota extends AppCompatActivity {
         Tarea=1;
     }
 
-    public void Guardar(View view){
-        Intent myintent = new Intent(AgregarNota.this, MainActivity.class);
-        startActivity(myintent);
-    }
 
 
-    public void AgregarNota(){
-        SQLiteDatabase db=conn.getWritableDatabase();
-        ContentValues values= new ContentValues();
 
-        if(Tarea==1){
-            values.put(CrearTabla.titulo,etTitulo.getText().toString());
-            values.put(CrearTabla.Descripcion,txtDescripcion.getText().toString());
-            //values.put(CrearTabla.fechaCreado,().toString());   obtener fecha de ejecucion
-            values.put(CrearTabla.fechaLimite,tvFecha.getText().toString());
-            values.put(CrearTabla.HoraLimite,tvHora.getText().toString());
-            //enviar valor en el campo de cumplida
-            values.put(CrearTabla.Tarea,Tarea);
-        }else{
-            values.put(CrearTabla.titulo,etTitulo.getText().toString());
-            values.put(CrearTabla.Descripcion,txtDescripcion.getText().toString());
-            values.put(CrearTabla.Tarea,Tarea);
-        }
 
-    }
+
+
+
+
 
 }

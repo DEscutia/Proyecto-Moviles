@@ -8,18 +8,41 @@ import androidx.annotation.Nullable;
 
 public class BDD extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "PFinal";
 
-    public BDD(Context applicationContext, String pFinal, Context context, int i) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+
+    public static final String[] COLUMNS_NAME_NOTA={
+            "id", "titulo","Descripcion","fechaCreado","fechaLimite","HoraLimite","Cumplida", "Tarea"
+    };
+
+
+
+    public  static final String TABLE_NAME_NOTA =
+            "notas";
+
+    public BDD(@Nullable Context context) {
+        super(context,
+                "bdd",
+                null,
+                1);
     }
 
+
+    public static final String CREAR_TABLA_NOTAS="CREATE TABLE " + TABLE_NAME_NOTA + " ("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "titulo TEXT NOT NULL,"
+            + "Descripcion TEXT,"
+            +"fechaCreado  Date,"
+            + "fechaLimite text ,"
+            + "HoraLimite time,"
+            +  "Cumplida Tinyint,"
+            + "Tarea Tinyint"+
+            ");";
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CrearTabla.CREAR_TABLA_NOTAS);
+        db.execSQL(CREAR_TABLA_NOTAS);
         db.execSQL(CrearTabla.CREAR_TABLA_ARCHIVOS);
         db.execSQL(CrearTabla.CREAR_TABLA_RECORDATORIOS);
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">Proyect</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Titulo">Title</string>
+    <string name="Descripcion">Description</string>
+    <string name="Nota">Note</string>
+    <string name="Tarea">Task</string>
+    <string name="Recordatorio">Reminder: </string>
+    <string name="Fecha">Date</string>
+    <string name="SelecionarFecha">Select Date</string>
+    <string name="Hora">Time</string>
+    <string name="SeleccionarHora">Select Time</string>
+    <string name="Guardar">save</string>
+
+    <string name="BuscarArchivo">Search File</string>
+    <string name="Camara">Camera</string>
+    <string name="Audio">Audio</string>
+    <string name="Descripcion2">Description</string>
+    <string name="Descripcion3"></string>
+    <string name="Guardar2">save</string>
+
+
+
+
+</resources>

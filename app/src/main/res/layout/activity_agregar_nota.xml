@@ -6,60 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".AgregarNota">
 
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Titulo:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/etTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:ems="10"
+        android:hint="@string/Titulo"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Descripcion: "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="344dp"
         android:layout_height="114dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="124dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/Descripcion"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
     <TextView
         android:id="@+id/txtRecordatorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="372dp"
+        android:hint="@string/Recordatorio"
         android:text="Recordatorio:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
@@ -71,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:onClick="Guardar"
+        android:hint="@string/Guardar"
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="420dp"
+        android:hint="@string/Fecha"
         android:text="Fecha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -96,6 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="408dp"
+        android:hint="@string/SelecionarFecha"
         android:onClick="obtenerFecha"
         android:text="Seleccionar Fecha"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="508dp"
+        android:hint="@string/Hora"
         android:text="Hora"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +106,7 @@
         android:layout_marginTop="500dp"
         android:layout_marginEnd="72dp"
         android:layout_marginRight="72dp"
+        android:hint="@string/SeleccionarHora"
         android:onClick="obtenerHora"
         android:text="Seleccionar Hora"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -143,6 +127,7 @@
             android:id="@+id/rbtnNota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/Nota"
             android:onClick="Nota"
             android:text="Nota" />
 
@@ -150,9 +135,10 @@
             android:id="@+id/rbtnTarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tarea"
+            android:checked="true"
+            android:hint="@string/Tarea"
             android:onClick="Tarea"
-            android:checked="true"/>
+            android:text="Tarea" />
     </RadioGroup>
 
 
